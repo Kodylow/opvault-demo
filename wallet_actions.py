@@ -9,7 +9,6 @@ from VaultSpec import _are_all_vaultspecs
 from VaultUtxo import VaultUtxo
 from VaultsState import VaultsState
 from WalletMetadata import WalletMetadata
-from main import BITCOIN_RPC_URL, FEE_VALUE_SATS
 from utils import txid_to_int
 from verystable.wallet import SingleAddressWallet, Outpoint
 import typing as t
@@ -20,6 +19,7 @@ from verystable.core.script import CScript
 from verystable import core, wallet
 from verystable.core.messages import COutPoint, CTxOut, CTxIn
 from verystable.rpc import BitcoinRPC
+from config import BITCOIN_RPC_URL, FEE_VALUE_SATS
 
 
 def get_recovery_tx(

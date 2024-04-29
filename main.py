@@ -1,4 +1,16 @@
 #!/usr/bin/env python3
+import verystable
+from verystable import core
+from verystable.rpc import JSONRPCError
+from verystable.wallet import Outpoint
+from verystable.serialization import VSJson
+from rich import print
+
+verystable.softforks.activate_bip345_vault()
+verystable.softforks.activate_bip119_ctv()
+
+from clii import App
+from bip32 import BIP32
 import os
 import sys
 import random
@@ -20,18 +32,6 @@ from WalletMetadata import WalletMetadata
 from utils import _sigint_handler, print_activity, recoveryauth_phrase_to_key
 from wallet_actions import get_recovery_tx, load, start_withdrawal
 from logger_config import log
-
-from clii import App
-from bip32 import BIP32
-import verystable
-from verystable import core
-from verystable.rpc import JSONRPCError
-from verystable.wallet import Outpoint
-from verystable.serialization import VSJson
-from rich import print
-
-verystable.softforks.activate_bip345_vault()
-verystable.softforks.activate_bip119_ctv()
 
 # Wire up JSON serialization for the classes above.
 VSJson.add_allowed_classes(

@@ -12,12 +12,11 @@
             owner = "benthecarman";
             repo = "bitcoin";
             rev = "f036909dbe288ee5b7f2c38564a3c5375255822f";
-            sha256 = "<correct-sha256>";  // You need to replace this with the actual sha256 of the commit
+            sha256 = "<correct-sha256>";
           };
         });
       in rec {
-        devShell = pkgs.mkShell {
-          buildInputs = with pkgs; [ python3 bitcoindCustom ];
-        };
+        devShell =
+          pkgs.mkShell { buildInputs = with pkgs; [ python3 bitcoindCustom ]; };
       });
 }

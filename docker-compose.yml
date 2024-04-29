@@ -17,7 +17,8 @@ services:
 
   # Mutinynet
   bitcoin:
-    build: 
+    platform: linux/amd64
+    build:
       context: ./
       dockerfile: Dockerfile.mutinynet
     volumes:

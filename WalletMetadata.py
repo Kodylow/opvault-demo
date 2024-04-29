@@ -4,6 +4,7 @@ from RecoverySpec import RecoverySpec
 from TriggerSpec import TriggerSpec
 from verystable.serialization import VSJson
 from verystable.wallet import Outpoint
+from logger_config import log
 
 from VaultConfig import VaultConfig
 

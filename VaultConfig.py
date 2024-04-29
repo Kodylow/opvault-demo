@@ -19,7 +19,7 @@ class VaultConfig:
     recovery_pubkey: bytes
     recoveryauth_pubkey: bytes
     trigger_xpub: str
-    network: str = "regtest"
+    network: str = "signet"
 
     # Determines where trigger keys will be generated.
     trigger_xpub_path_prefix: str = "m/0"

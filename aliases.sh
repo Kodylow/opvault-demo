@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 
 build() {
   if [ "$(id -u)" != "1000" ]; then
@@ -12,10 +12,10 @@ build() {
 
 start-bitcoin() {
   if [ "$1" = "fg" ]; then
-      docker-compose up bitcoin
+    docker-compose up bitcoin
   else
-      docker-compose up -d bitcoin
-      docker-compose ps
+    docker-compose up -d bitcoin
+    docker-compose ps
   fi
 }
 
@@ -23,8 +23,8 @@ demo() {
   docker-compose run --rm demo $@
 }
 
-bitcoin-cli() {
-  docker-compose exec bitcoin bitcoin-cli -regtest $@
+bcli() {
+  docker-compose exec bitcoin bitcoin-cli -signet $@
 }
 
 check-bitcoin-up() {
@@ -38,13 +38,14 @@ mine() {
   check-bitcoin-up || start-bitcoin
 
   if [ -z "${TO_ADDRESS}" ]; then
-    bitcoin-cli -generate $@
+    bcli -generate $@
   else
-    bitcoin-cli generatetoaddress $@
+    bcli generatetoaddress $@
   fi
 }
 
-VAULT_GUIDE=$(cat << EOF
+VAULT_GUIDE=$(
+  cat <<EOF
 
 OP_VAULT shortcuts
 ------------------
@@ -53,7 +54,7 @@ OP_VAULT shortcuts
   start-bitcoin             run regtest bitcoind in the background
   demo [cmd ...]            run some command in the demo container
                               e.g. \`demo ./main.py watchtower\`
-  bitcoin-cli [...]         run some bitcoin-cli command
+  bcli [...]         run some bitcoin-cli command
   mine [num=1] [addr]       mine some blocks, maybe to an address
 
   vault-help                show this help
@@ -114,11 +115,11 @@ vault-help() {
 }
 
 clean() {
-    docker-compose down
-    rm -rf bitcoin-datadir config.json secrets.json \
-      .local .bash_history .mypy_cache __pycache__
+  docker-compose down
+  rm -rf bitcoin-datadir config.json secrets.json \
+    .local .bash_history .mypy_cache __pycache__
 }
 
 if [ "$1" != "-q" ]; then
-    vault-help
+  vault-help
 fi

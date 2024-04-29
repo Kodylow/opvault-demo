@@ -1,4 +1,5 @@
 from dataclasses import dataclass
+from functools import cached_property
 from verystable.core.script import CScript
 from verystable.core import script
 import typing as t

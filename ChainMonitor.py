@@ -1,4 +1,7 @@
-from dataclasses import dataclass
+from dataclasses import dataclass, field
+from VaultSpec import VaultSpec
+from VaultsState import VaultsState
+from verystable.rpc import BitcoinRPC
 
 from WalletMetadata import WalletMetadata
 
