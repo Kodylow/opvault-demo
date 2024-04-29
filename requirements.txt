@@ -2,3 +2,5 @@ verystable@git+https://github.com/jamesob/verystable
 bip32
 clii
 rich
+PySocks
+pyln-bolt7

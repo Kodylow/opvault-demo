@@ -21,6 +21,8 @@ services:
     build:
       context: ./
       dockerfile: Dockerfile.mutinynet
+    ports:
+      - "38332:38332"
     volumes:
       - ./bitcoin-datadir:/home/user/.bitcoin
 

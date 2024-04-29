@@ -301,6 +301,10 @@ def load(
         locked_utxos=wallet_metadata.get_locked_fee_outpoints(),
         seed=wallet_metadata.fee_wallet_seed,
     )
+
+    print(rpc.getblockchaininfo())
+
+    # TODO: check if IBD, throw error
     fees.rescan()
 
     monitor = ChainMonitor(wallet_metadata, rpc)

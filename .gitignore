@@ -3,6 +3,7 @@ config.json
 secrets.json
 *.log
 bitcoin-datadir
+bitcoin_datadir
 .bash_history
 .cache/
 .local/
